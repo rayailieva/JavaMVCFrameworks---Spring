@@ -9,7 +9,7 @@ public class OfferFindBindingModel {
 
     private BigDecimal familyBudget;
     private String familyApartmentType;
-    private BigDecimal familyName;
+    private String familyName;
 
     public OfferFindBindingModel() {
     }
@@ -36,11 +36,11 @@ public class OfferFindBindingModel {
 
     @NotNull
     @NotEmpty
-    public BigDecimal getFamilyName() {
+    public String getFamilyName() {
         return this.familyName;
     }
 
-    public void setFamilyName(BigDecimal familyName) {
+    public void setFamilyName(String familyName) {
         this.familyName = familyName;
     }
 }
