@@ -11,4 +11,6 @@ public interface DocumentService {
     DocumentServiceModel findDocumentById(String id);
 
     List<DocumentServiceModel> findAllDocuments();
+
+    boolean printDocument(String id);
 }

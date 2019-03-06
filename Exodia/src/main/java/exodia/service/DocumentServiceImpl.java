@@ -58,4 +58,17 @@ public class DocumentServiceImpl implements DocumentService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public boolean printDocument(String id) {
+        try {
+            this.documentRepository.deleteById(id);
+
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+
+            return false;
+        }
+    }
+
 }

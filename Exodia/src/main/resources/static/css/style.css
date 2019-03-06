@@ -14,8 +14,10 @@ textarea {
     resize: none;
 }
 
-.home-doc {
-    width: 16%;
-    margin: 0% 4% 0% 0;
+.home-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 1.5rem 3rem;
 }
 

@@ -72,4 +72,39 @@ public class DocumentController {
 
         return modelAndView;
     }
+
+    @GetMapping("/print/{id}")
+    public ModelAndView print(@PathVariable(name="id") String id,
+                              ModelAndView modelAndView,
+                                 HttpSession session) {
+        if(session.getAttribute("username") == null){
+            modelAndView.setViewName("redirect:/login");
+        }else{
+            DocumentServiceModel documentServiceModel =
+                    this.documentService.findDocumentById(id);
+
+            if(documentServiceModel == null){
+                throw new IllegalArgumentException("Document not found!");
+            }
+
+            modelAndView.setViewName("print");
+            modelAndView.addObject("model", this.modelMapper
+                    .map(documentServiceModel, DocumentViewModel.class));
+        }
+
+        return modelAndView;
+    }
+
+    @PostMapping("/print/{id}")
+    public ModelAndView printConfirm(@PathVariable(name="id") String id,
+                                     ModelAndView modelAndView,
+                                     HttpSession session){
+        if(!this.documentService.printDocument(id)){
+            throw new IllegalArgumentException("Something went wrong!");
+        }
+
+        modelAndView.setViewName("redirect:/home");
+
+        return modelAndView;
+    }
 }
